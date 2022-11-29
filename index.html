@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #form-blur{
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            background-color: rgba(76, 53, 53, 0.728);
+            /* margin: auto; */
+            z-index: -1;  
+            opacity: 0;
+            transition: 1s;
+            
+        }
+        #form-btn{
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: rgb(9, 44, 197);
+            border: none;
+            color: white;
+            
+        }
+        form{
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translate(-50%,-50%);           
+            width: fit-content;
+            height: 40vh;
+            width: 20vw;
+            margin: auto;
+            padding: 4vh 5%;
+            display: flex;           
+            justify-content: center;
+            flex-direction: column;
+            transition: 2s;                     
+            z-index: 99;
+            border-radius: 5px;
+            filter: drop-shadow(1px 1px 10px black);           
+            background-color: rgb(252, 238, 238);
+        }
+        #login-btn{
+            margin-top: 20px;
+            width: fit-content;
+            padding: 5px;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        #close{
+            position: absolute;
+            top: 19px;
+            right: 21px;
+            padding:1px  5px;
+            background-color: black;            
+            color: white;
+            cursor: pointer;
+            border: 1px solid;
+            border-radius: 14px;
+        }
+        @media only screen and (max-width: 815px) {
+            form{
+            width: 56vw;
+            padding: 4vh 11%;
+           
+        }
+        }
+        
+
+      
+
+    </style>
+    <title>popup form</title>
+</head>
+<body>
+    <button id="form-btn">Show</button>
+
+    <div class="blur" id="form-blur"></div>
+
+    <div id="form-box">
+
+      <form action="index.html" method="post">
+        <div id="close">&cross;</div>
+
+        <h2 style="text-align: center; padding:5px;">Login</h2>
+        <label for="userName">
+            Name
+        </label>
+        <input type="text" name="username" id="userName" placeholder="@username" required>
+        <label for="password">
+            Password
+        </label>
+        <input type="password" name="password" id="password" placeholder="password" required>
+        <button id="login-btn">Login</button>
+      </form>
+
+    </div>
+
+    <script>
+         setTimeout(showBox, 2000);
+        let btn=document.querySelector("#form-btn");
+        let blur=document.querySelector('#form-blur')
+        let form=document.querySelector("form");
+        let close=document.querySelector('#close')
+       
+        function showBox(){
+            form.style="top:50%;"   
+            blur.style='z-index:9; opacity: 100;' 
+            document.querySelector('#form-btn').innerHTML="😍😍😍";        
+        }
+        function hideBox(){
+            form.style="top:-50%;"   
+            blur.style='z-index:-1; opacity: 0;'    
+            document.querySelector('#form-btn').innerHTML="Show";     
+        }
+        
+        btn.addEventListener('click',showBox);
+        close.addEventListener('click',hideBox);
+
+        
+        
+    </script>
+</body>
+</html>
